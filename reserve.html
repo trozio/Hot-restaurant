@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
     <!-- My Css -->
@@ -51,11 +53,11 @@
                     </div>
                 </div>
                 <div class="row">
-                        <div class="input-field col s12">
-                            <input id="number" type="tel" class="validate">
-                            <label for="number">Phone Number</label>
-                        </div>
+                    <div class="input-field col s12">
+                        <input id="number" type="tel" class="validate">
+                        <label for="number">Phone Number</label>
                     </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="email" type="email" class="validate">
@@ -90,6 +92,12 @@
 
     <!-- JavaScript -->
     <script src="./assets/javascript/logic.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            M.updateTextFields();
+        });
+    </script>
 
 </body>
 
