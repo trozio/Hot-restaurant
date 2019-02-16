@@ -1,10 +1,14 @@
-var express = require("express");
-var path = require("path");
+const express = require('express')
+const path = require("path");
+
 
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = 3000;
+
+const tables = []
+const waitlist = []
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -37,16 +41,24 @@ var characters = [
 
 app.get("/", function(req, res) {
   // res.send("Welcome to the Star Wars Page!")
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 // Displays all characters
-app.get("/api/characters", function(req, res) {
+app.get("/api/tables", function(req, res) {
   return res.json(characters);
 });
 
 // Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
+app.get("/api/reserve", function(req, res) {
   var chosen = req.params.character;
 
   console.log(chosen);
@@ -59,8 +71,6 @@ app.get("/api/characters/:character", function(req, res) {
 
   return res.json(false);
 });
-
-
 
 app.post("/api/characters", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
@@ -75,7 +85,6 @@ app.post("/api/characters", function(req, res) {
   // We then display the JSON to the users
   res.json(newcharacter);
 });
-
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
