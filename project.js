@@ -37,16 +37,16 @@ var characters = [
 
 app.get("/", function(req, res) {
   // res.send("Welcome to the Star Wars Page!")
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "home.html"));
 });
 
 // Displays all characters
-app.get("/api/characters", function(req, res) {
+app.get("/tables.html", function(req, res) {
   return res.json(characters);
 });
 
 // Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
+app.get("/reserve.html", function(req, res) {
   var chosen = req.params.character;
 
   console.log(chosen);
