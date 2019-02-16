@@ -12,14 +12,14 @@ app.use(express.json());
 
 var characters = [
   {
-    routeName: "yoda",
+    routeName: "yodahgjkbhk",
     name: "Yoda",
     role: "Jedi Master",
     age: 900,
     forcePoints: 2000
   },
   {
-    routeName: "darthmaul",
+    routeName: "dart",
     name: "Darth Maul",
     role: "Sith Lord",
     age: 200,
