@@ -4,90 +4,101 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <title>Hot Resturant</title>
-    <!-- Reset CSS -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+	<meta charset="UTF-8">
+	<title>Hot Resturant</title>
+	<!-- Reset CSS -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 
-    <!-- Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!-- Materialize CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-    <!-- My Css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<!-- My Css -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
 
 </head>
 
 <div class="row" style="margin-top: 8%;">
-    <div class="col m0 s0 l2"></div>
-    <div class="col m12 s12 l8 ">
-        <div class="card blue-grey darken-1 center-align" style="padding-top:10%; padding-bottom:10%; padding-right: 15%; padding-left:15%;">
-            <div class=" center-align">
-                <div class="card-content white-text center-align">
-                    <span class="card-title" style="font-family: 'Staatliches', cursive; font-size: 40pt; letter-spacing: 3px;">Hot
-                        Resturant</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card-action center-align">
-                <a href="/reserve" class="waves-effect waves-light btn"><i class="material-icons left">event_available</i>Make
-                    Reservation</a>
-                <a href="/home" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home Page</a>
-            </div>
-        </div>
-    </div>
-    <div class="col m0 s0 l2"></div>
+	<div class="col m0 s0 l2"></div>
+	<div class="col m12 s12 l8 ">
+		<div class="card blue-grey darken-1 center-align" style="padding-top:10%; padding-bottom:10%; padding-right: 15%; padding-left:15%;">
+			<div class=" center-align">
+				<div class="card-content white-text center-align">
+					<span class="card-title" style="font-family: 'Staatliches', cursive; font-size: 40pt; letter-spacing: 3px;">Hot
+						Resturant</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="card-action center-align">
+				<a href="/reserve" class="waves-effect waves-light btn"><i class="material-icons left">event_available</i>Make
+					Reservation</a>
+				<a href="/" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home Page</a>
+			</div>
+		</div>
+	</div>
+	<div class="col m0 s0 l2"></div>
 </div>
 
 <br>
 <div class="row">
-    <div class="col m0 s0 l2"></div>
-    <div class="col m6 s6 l4">
-        <div class="card center">Current Reservations
-            <div id="current-reservations">
-                <div class="name"></div>
-                <div class="email"></div>
-                <div class="phone"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col m6 s6 l4">
-        <div class="card center">Waiting List
-            <div id="waiting-list">
-            </div>
-        </div>
-    </div>
-    <div class="col m0 s0 l2"></div>
+	<div class="col m0 s0 l2"></div>
+	<div class="col m6 s6 l4">
+		<div id="reservations" class="card center">Current Reservations
+
+				<div class="name"></div>
+				<div class="email"></div>
+				<div class="phone"></div>
+
+		</div>
+	</div>
+	<div class="col m6 s6 l4">
+		<div class="card center">Waiting List
+			<div id="waiting-list">
+			</div>
+		</div>
+	</div>
+	<div class="col m0 s0 l2"></div>
 </div>
 
 
 <body>
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <!-- JavaScript -->
-    <script src="./assets/javascript/logic.js"></script>
+	<!-- JavaScript -->
+	<script src="./assets/javascript/logic.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            M.updateTextFields();
-        });
+	<script>
+		$(document).ready(function() {
+			M.updateTextFields();
+		});
+		$.get("/api/tables", function(data) {
 
-        for (let i = 0; i < tables.length; i++) {
+			for (let i = 0; i < data.length; i++) {
+				let newDiv = $("<div>");
+                let name = $("<div>");
+                let email = $("<div>");
+                let phone = $("<div>");
+                $("#reservations").append(newDiv);
+                newDiv.append(name);
+                newDiv.append(email);
+                newDiv.append(phone);
+				name.html(data[i].name);
+				email.html(data[i].email);
+				phone.html(data[i].phone);
 
-        $(".name").text(tables[i].name);
-        $(".email").text(tables[i].email);
-        $(".phone").text(tables[i].phone);
-}
-    </script>
+
+
+			}
+		});
+	</script>
 
 </body>
 

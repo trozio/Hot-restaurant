@@ -38,7 +38,7 @@
             <div class="card-action center-align">
                 <a href="/tables" class="waves-effect waves-light btn"><i class="material-icons left">event_note</i>View
                     Tables</a>
-                <a href="/home" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home Page</a>
+                <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home Page</a>
             </div>
         </div>
 
@@ -97,6 +97,29 @@
         $(document).ready(function () {
             M.updateTextFields();
         });
+
+        $("#submitbutton").on("click", function(){
+            $.post('/api/tables', function (req, res) {
+            	console.log('reserve request submitted');
+            	console.log(req.body);
+
+              let newReservation = req.body;
+
+              tables.push(newReservation);
+
+              // Check if user is in the first 4 in list
+              let isBooked;
+              if(tables.length <= 4){
+                isBooked = true;
+              }
+              else{
+                isBooked = false;
+              }
+
+              res.json(isBooked);
+
+            });
+        })
     </script>
 
 </body>
