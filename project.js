@@ -68,7 +68,7 @@ app.get("/api/tables", function(req, res) {
 // });
 
 // reserve API call
-app.post('/api/reserve', function (req, res) {
+app.post('/api/tables', function (req, res) {
 	console.log('reserve request submitted');
 	console.log(req.body);
 
@@ -111,4 +111,3 @@ app.listen(PORT, function (err) {
 
   console.log(`Listening on port ${PORT}.`)
 })
-
