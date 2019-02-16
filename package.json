@@ -1,0 +1,23 @@
+{
+  "name": "Hot-restaurant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "project.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trozio/Hot-restaurant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trozio/Hot-restaurant/issues"
+  },
+  "homepage": "https://github.com/trozio/Hot-restaurant#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
